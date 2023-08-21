@@ -4,7 +4,7 @@ import json
 import os
 
 def main():
-    st.title("Newsletter Dashboard")
+    st.title("Podcasts Dashboard")
 
     available_podcast_info = create_dict_from_json_files('.')
 
@@ -12,7 +12,7 @@ def main():
     st.sidebar.header("Podcast RSS Feeds")
 
     # Dropdown box
-    st.sidebar.subheader("Available Podcasts Feeds")
+    st.sidebar.subheader("Available Podcasts")
     selected_podcast = st.sidebar.selectbox("Select Podcast", options=available_podcast_info.keys())
 
     if selected_podcast:
@@ -20,7 +20,7 @@ def main():
         podcast_info = available_podcast_info[selected_podcast]
 
         # Right section - Newsletter content
-        st.header("Newsletter Content")
+        st.header("Main Content")
 
         # Display the podcast title
         st.subheader("Episode Title")
@@ -56,11 +56,11 @@ def main():
                 f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
 
     # User Input box
-    st.sidebar.subheader("Add and Process New Podcast Feed")
+    st.sidebar.subheader("Add and Process a New Podcast Feed")
     url = st.sidebar.text_input("Link to RSS Feed")
 
     process_button = st.sidebar.button("Process Podcast Feed")
-    st.sidebar.markdown("**Note**: Podcast processing can take upto 5 mins, please be patient.")
+    st.sidebar.markdown("**Note**: Processing can take up to 5 mins, please be patient :)")
 
     if process_button:
 
@@ -68,7 +68,7 @@ def main():
         podcast_info = process_podcast_info(url)
 
         # Right section - Newsletter content
-        st.header("Newsletter Content")
+        st.header("Main Content")
 
         # Display the podcast title
         st.subheader("Episode Title")
